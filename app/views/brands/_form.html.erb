@@ -1,0 +1,38 @@
+<%= form_for @brand do |f| %>
+
+  <% if @brand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+​
+      <ul>
+      <% @brand.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :house %><br>
+    <%= f.text_field :house %>
+  </p>
+
+  <p>
+    <%= f.label :head_designer %><br>
+    <%= f.text_field :head_designer %>
+  </p>
+
+  <p>
+    <%= f.label :conglomerate %><br>
+    <%= collection_select(:brand, :conglomerate_id, Conglomerate.all, :id, :name, include_blank: true) %>
+  </p>
+
+  <p>
+    <%= f.label :category, "Categories" %><br>
+    <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name, :category_ids => []) %>
+  </p>
+
+  <p><%= f.submit %></p>
+
+<% end %>
+
