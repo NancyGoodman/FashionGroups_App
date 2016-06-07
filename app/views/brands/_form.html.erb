@@ -14,7 +14,6 @@
       </div>
     <% end %>
 
-
     <div class="form-group">
       <%= f.label :house %><br>
       <%= f.text_field :house, class: 'form-control' %>
@@ -39,16 +38,6 @@
     </p>
     <!-- </div> -->
 
- <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name) do |cbox| %>
- <%= cbox.label(class: "checkbox inline") { cbox.check_box(class: "checkbox") + cbox.text} %>
- <% end %>
-
-
-
-
-
-
-
     <div class="form-group">
       <%= f.label :photo %>
       <%= f.file_field :photo, class: 'form-control' %>
@@ -59,12 +48,7 @@
       <%= f.file_field :logo, class: 'form-control' %>
     </div>
 
-
-
-
-
-
-    <p><%= f.submit class: "btn btn-primary btn-sm" %></p>
+    <%= f.submit class: "btn btn-primary btn-sm" %>
 
     <% end %>
   </div>
