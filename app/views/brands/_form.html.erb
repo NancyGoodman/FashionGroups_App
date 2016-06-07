@@ -25,15 +25,19 @@
       <%= f.text_field :head_designer, class: 'form-control' %>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
+    <p>
       <%= f.label :conglomerate %><br>
       <%= collection_select(:brand, :conglomerate_id, Conglomerate.all, :id, :name, include_blank: true) %>
-    </div>
+    </p>
+    <!-- </div> -->
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
+    <p>
       <%= f.label :category, "Categories" %><br>
       <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name) %>
-    </div>
+    </p>
+    <!-- </div> -->
 
     <div class="form-group">
       <%= f.label :photo %>
