@@ -16,7 +16,6 @@ class BrandsController < ApplicationController
 
   def create
     @brand = Brand.new(brand_params)
-​
     if @brand.save
       # redirect to index action
       flash[:notice] = "Brand was saved successfully"
