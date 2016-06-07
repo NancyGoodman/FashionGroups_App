@@ -1,27 +1,31 @@
-<%= link_to 'Return to brands list', brands_path %>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to 'Return to brands list', brands_path %>
 
-<% if @brand %>
+    <% if @brand %>
 
-  <h1><%= @brand.house %></h1>
-  <%= image_tag @brand.photo.url(:small) %>
+      <h1><%= @brand.house %></h1>
+      <%= image_tag @brand.photo.url(:small) %>
 
-  <p>Head Designer, <%= @brand.head_designer %></p>
-  <p>Conglomerate: <%= @brand.conglomerate.try(:name) %></p>
-  <p>Categories: </p>
+      <p>Head Designer, <%= @brand.head_designer %></p>
+      <p>Conglomerate: <%= @brand.conglomerate.try(:name) %></p>
+      <p>Categories: </p>
 
-  <ul>
-    <% @brand.categories.each do |category| %>
-    <li><%= category.name %></li>
+      <ul>
+        <% @brand.categories.each do |category| %>
+        <li><%= category.name %></li>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+      <p>Brand is not found. Please check the name</p>
+
+    <% end %>   
+
+    <% if current_user %>
+    <%= link_to "edit", edit_brand_path(@brand) %>
     <% end %>
-  </ul>
-
-<% else %>
-
-  <p>Brand is not found. Please check the name</p>
-
-<% end %>   
-
-<% if current_user %>
-<%= link_to "edit", edit_brand_path(@brand) %>
-<% end %>
+  </div>
+</div>
 

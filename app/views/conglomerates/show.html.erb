@@ -1,29 +1,33 @@
-<br><br><%= link_to 'Return to brands list', brands_path %><br>
-<%= link_to 'Return to conglomerates list', conglomerates_path %>
+<div class="row">
+  <div class="col-md-6">
+    <br><br><%= link_to 'Return to brands list', brands_path %><br>
+    <%= link_to 'Return to conglomerates list', conglomerates_path %>
 
-<h1>Conglomerates</h1>
+    <h1>Conglomerates</h1>
 
 
-<% if @conglomerate %>
+    <% if @conglomerate %>
 
-  <h1><%= @conglomerate.name %></h1>
-  <%= image_tag @conglomerate.photo.url(:thumb) %>
+      <h1><%= @conglomerate.name %></h1>
+      <%= image_tag @conglomerate.photo.url(:thumb) %>
 
-  <p><%= @conglomerate.director %></p>
-  <p>Brands associated with this conglomerate: </p>
-  <ul>
-    <% @conglomerate.brands.each do |brand| %>
-    <p><li>Brand: <%= brand.house %>, <br>Head Designer: <%= brand.head_designer %></li> </p>
+      <p><%= @conglomerate.director %></p>
+      <p>Brands associated with this conglomerate: </p>
+      <ul>
+        <% @conglomerate.brands.each do |brand| %>
+        <p><li>Brand: <%= brand.house %>, <br>Head Designer: <%= brand.head_designer %></li> </p>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+      <p>Brand is not found. Please check the name</p>
+
+    <% end %>   
+
+    <% if current_user %>
+    <%= link_to "edit", edit_conglomerate_path(@conglomerate) %>
     <% end %>
-  </ul>
-
-<% else %>
-
-  <p>Brand is not found. Please check the name</p>
-
-<% end %>   
-
-<% if current_user %>
-<%= link_to "edit", edit_conglomerate_path(@conglomerate) %>
-<% end %>
+  </div>
+</div>
 

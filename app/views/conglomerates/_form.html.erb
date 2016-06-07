@@ -1,33 +1,36 @@
-<%= form_for @conglomerate, :html => { :multipart => true} do |f| %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for @conglomerate, :html => { :multipart => true} do |f| %>
 
-  <% if @conglomerate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@conglomerate.errors.count, "error") %> prohibited this conglomerate from being saved:</h2>
-​
-      <ul>
-      <% @conglomerate.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @conglomerate.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@conglomerate.errors.count, "error") %> prohibited this conglomerate from being saved:</h2>
+  ​
+        <ul>
+        <% @conglomerate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :photo %>
+      <%= f.file_field :photo, class: 'form-control' %>
     </div>
-  <% end %>
 
-  <p>
-    <%= f.label :photo %>
-    <%= f.file_field :photo %>
-  </p>
+    <div class="form-group">
+      <%= f.label :conglomerate %><br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <p>
-    <%= f.label :conglomerate %><br>
-    <%= f.text_field :name %>
-  </p>
+    <div class="form-group">
+      <%= f.label :Title_and_Name_of_Director %><br>
+      <%= f.text_field :director, class: 'form-control' %>
+    </div>
 
-    <p>
-    <%= f.label "Title, Name of Director" %><br>
-    <%= f.text_field :director %>
-  </p>
-
-  <p><%= f.submit %></p>
-
-<% end %>
+    <%= f.submit class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </div>
+</div>
 

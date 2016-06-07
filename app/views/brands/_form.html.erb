@@ -13,17 +13,16 @@
         </ul>
       </div>
     <% end %>
-  </div>
 
-  <div class="col-md-4">
+
     <div class="form-group">
       <%= f.label :house %><br>
-      <%= f.text_field :house, class: "form-control" %>
+      <%= f.text_field :house, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= f.label :head_designer %><br>
-      <%= f.text_field :head_designer, class: "form-control" %>
+      <%= f.text_field :head_designer, class: 'form-control' %>
     </div>
 
     <div class="form-group">
@@ -31,24 +30,75 @@
       <%= collection_select(:brand, :conglomerate_id, Conglomerate.all, :id, :name, include_blank: true) %>
     </div>
 
-    <p>
+    <div class="form-group">
+      <%= f.label :category, "Categories" %><br>
+      <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :photo %>
+      <%= f.file_field :photo, class: 'form-control' %>
+    </div>
+
+   <div class="form-group">
+      <%= f.label :logo %>
+      <%= f.file_field :logo, class: 'form-control' %>
+    </div>
+
+
+
+
+
+
+    <!-- <div class="form-group">
+      <label class="control-label" for="user_misc">Misc</label>
+      <div class="checkbox">
+        <label for="user_misc_1">
+          <input checked="checked" id="user_misc_1" name="user[misc][]" type="checkbox" value="1" /> Foo
+        </label>
+      </div>
+      <div class="checkbox"><label for="user_misc_2"><input checked="checked" id="user_misc_2" name="user[misc][]" type="checkbox" value="2" /> Bar
+      </label>
+    </div></div> -->
+
+    <br>
+
+    <!-- <div class="checkbox"> -->
+      <%= f.label :category, "Categories" %><br>
+      <%= f.collection_check_boxes :categories, Category.all, :id, :name %>
+    <!-- </div> -->
+  
+
+    <br>
+
+    <div class="checkbox">
+      <%= f.label :category, "Categories" %><br>
+      <%= f.collection_check_boxes :categories, Category.all, :id, :name %>
+    </div>
+
+    <br> 
+
+    <div class="form-group">
+      <%= f.label :category, "Categories" %>
+      <div class="checkbox col-med-4 col-med-offset-2">
+      <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name, :category_ids => [], class: "checkbox") %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+    <!-- <p> -->
       <%= f.label :category, "Categories" %><br>
       <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name, :category_ids => []) %>
-    </p>
+    <!-- </p> -->
+     </div>
 
-    <p>
-      <%= f.label :photo %>
-      <%= f.file_field :photo %>
-    </p>
+ 
 
-    <p>
-      <%= f.label :logo %> 
-      <%= f.file_field :logo %>
-    </p>
 
     <p><%= f.submit class: "btn btn-primary btn-sm" %></p>
 
     <% end %>
-
+  </div>
 </div>
 
