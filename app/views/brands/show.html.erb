@@ -3,7 +3,9 @@
 <% if @brand %>
 
   <h1><%= @brand.house %></h1>
-  <p>Head Designer: <%= @brand.head_designer %></p>
+  <%= image_tag @brand.photo.url(:small) %>
+
+  <p>Head Designer, <%= @brand.head_designer %></p>
   <p>Conglomerate: <%= @brand.conglomerate.try(:name) %></p>
   <p>Categories: </p>
 

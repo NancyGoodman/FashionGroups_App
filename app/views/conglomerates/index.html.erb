@@ -1,0 +1,34 @@
+<h1>Conglomerates</h1>
+<% if current_user %>
+<p><%= link_to 'Add a new conglomerate', new_conglomerate_path %></p>
+<p><%= link_to 'Return to brands list', brands_path %></p>
+<% end %>
+
+<table>
+  <p><tr></tr></p>
+  <tr>
+    <th></th>
+    <th></th>
+      <% if current_user %>  
+      <th></th>
+      <% end %>
+  </tr>
+
+  <tbody>
+    <% @conglomerates.each do |conglomerate| %>
+      <tr>
+        <td><%= image_tag conglomerate.photo.url(:thumb), class: 'photo_pic' %>
+        <td><h3><%= link_to(conglomerate.name, conglomerate_path(conglomerate)) %></h3></td>
+
+        <% if current_user %>
+        <td>
+          <%= link_to "edit", edit_conglomerate_path(conglomerate) %>
+          <%= link_to "delete", conglomerate_path(conglomerate), method: :delete, data: {confirm: 'Are you sure you want to delete this conglomerate?'} %>
+        </td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

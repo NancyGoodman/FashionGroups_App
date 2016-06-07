@@ -1,0 +1,33 @@
+<%= form_for @conglomerate, :html => { :multipart => true} do |f| %>
+
+  <% if @conglomerate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conglomerate.errors.count, "error") %> prohibited this conglomerate from being saved:</h2>
+​
+      <ul>
+      <% @conglomerate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </p>
+
+  <p>
+    <%= f.label :conglomerate %><br>
+    <%= f.text_field :name %>
+  </p>
+
+    <p>
+    <%= f.label "Title, Name of Director" %><br>
+    <%= f.text_field :director %>
+  </p>
+
+  <p><%= f.submit %></p>
+
+<% end %>
+

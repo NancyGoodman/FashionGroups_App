@@ -1,38 +1,54 @@
-<%= form_for @brand do |f| %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for @brand, :html => { :multipart => true} do |f| %>
 
-  <% if @brand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
-​
-      <ul>
-      <% @brand.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @brand.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+  ​
+        <ul>
+        <% @brand.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :house %><br>
+      <%= f.text_field :house, class: "form-control" %>
     </div>
-  <% end %>
 
-  <p>
-    <%= f.label :house %><br>
-    <%= f.text_field :house %>
-  </p>
+    <div class="form-group">
+      <%= f.label :head_designer %><br>
+      <%= f.text_field :head_designer, class: "form-control" %>
+    </div>
 
-  <p>
-    <%= f.label :head_designer %><br>
-    <%= f.text_field :head_designer %>
-  </p>
+    <div class="form-group">
+      <%= f.label :conglomerate %><br>
+      <%= collection_select(:brand, :conglomerate_id, Conglomerate.all, :id, :name, include_blank: true) %>
+    </div>
 
-  <p>
-    <%= f.label :conglomerate %><br>
-    <%= collection_select(:brand, :conglomerate_id, Conglomerate.all, :id, :name, include_blank: true) %>
-  </p>
+    <p>
+      <%= f.label :category, "Categories" %><br>
+      <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name, :category_ids => []) %>
+    </p>
 
-  <p>
-    <%= f.label :category, "Categories" %><br>
-    <%= collection_check_boxes(:brand, :category_ids, Category.all, :id, :name, :category_ids => []) %>
-  </p>
+    <p>
+      <%= f.label :photo %>
+      <%= f.file_field :photo %>
+    </p>
 
-  <p><%= f.submit %></p>
+    <p>
+      <%= f.label :logo %> 
+      <%= f.file_field :logo %>
+    </p>
 
-<% end %>
+    <p><%= f.submit class: "btn btn-primary btn-sm" %></p>
+
+    <% end %>
+
+</div>
 

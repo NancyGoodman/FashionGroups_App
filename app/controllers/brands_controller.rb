@@ -47,11 +47,11 @@ class BrandsController < ApplicationController
   private
 
   def find_brand
-    @brand = Brand.find_by_id(params[:id])
+    @brand = Brand.find(params[:id])
   end
 
   def brand_params
-    params.require(:brand).permit(:house, :name, :head_designer, :conglomerate_id, :category_ids => [])
+    params.require(:brand).permit(:house, :name, :head_designer, :conglomerate_id, :photo, :logo, :category_ids => [])
   end
 
 end
