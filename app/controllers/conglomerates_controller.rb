@@ -51,7 +51,7 @@ class ConglomeratesController < ApplicationController
   end
 
   def conglomerate_params
-    params.require(:conglomerate).permit(:name, :photo, :director)
+    params.require(:conglomerate).permit(:house, :name, :photo, :director)
   end
 
 end
