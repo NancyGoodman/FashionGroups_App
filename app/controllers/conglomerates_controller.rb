@@ -16,7 +16,6 @@ class ConglomeratesController < ApplicationController
 
   def create
     @conglomerate = Conglomerate.new(conglomerate_params)
-​
     if @conglomerate.save
       # redirect to index action
       flash[:notice] = "Conglomerate was saved successfully"
